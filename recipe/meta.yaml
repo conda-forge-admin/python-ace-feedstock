@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/python-ace-${{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/python-ace-{{ version }}.tar.gz
   sha256: 7ab0fe185d34906300830fc3b2e27ddb1619851faac59c69220449711868f1e4
   patches:
     - pybind.patch
