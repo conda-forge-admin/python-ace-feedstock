@@ -33,7 +33,7 @@ requirements:
     - pandas >=2,<4
     - psutil
     - ruamel.yaml
-    - scikit-learn <2]
+    - scikit-learn <2
 
 test:
   imports:
