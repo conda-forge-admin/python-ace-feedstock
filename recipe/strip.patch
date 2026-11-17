@@ -1,0 +1,19 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2,4 +2,15 @@
+ find_program(CMAKE_CXX_COMPILER NAMES $ENV{CXX} g++ PATHS ENV PATH NO_DEFAULT_PATH)
+ project(pyace C CXX)
+ 
++# pybind11 invokes CMAKE_STRIP after linking; resolve bare tool names via PATH.
++if(CMAKE_STRIP AND NOT IS_ABSOLUTE "${CMAKE_STRIP}")
++    get_filename_component(_pyace_strip_name "${CMAKE_STRIP}" NAME)
++    find_program(_pyace_strip_path NAMES "${_pyace_strip_name}"
++                 PATHS ENV PATH NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)
++    if(NOT _pyace_strip_path)
++        message(FATAL_ERROR "Cannot find strip tool: ${CMAKE_STRIP}")
++    endif()
++    set(CMAKE_STRIP "${_pyace_strip_path}" CACHE FILEPATH "Strip tool" FORCE)
++endif()
++
+ if(NOT CMAKE_BUILD_TYPE)
