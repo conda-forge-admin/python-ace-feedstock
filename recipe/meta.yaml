@@ -10,6 +10,7 @@ source:
   sha256: 7ab0fe185d34906300830fc3b2e27ddb1619851faac59c69220449711868f1e4
   patches:
     - pybind.patch
+    - stdint.patch
 
 build:
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
