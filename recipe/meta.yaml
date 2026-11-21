@@ -11,10 +11,8 @@ source:
   patches:
     - pybind.patch
     - stdint.patch
-    - strip.patch  # [linux]
 
 build:
-  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   number: 0
   skip: true  # [win]
 
